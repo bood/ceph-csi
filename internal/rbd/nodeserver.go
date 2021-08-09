@@ -118,7 +118,7 @@ func (ns *NodeServer) NodeStageVolume(ctx context.Context, req *csi.NodeStageVol
 	}
 
 	isBlock := req.GetVolumeCapability().GetBlock() != nil
-	disableInUseChecks := false
+	disableInUseChecks := true
 	// MULTI_NODE_MULTI_WRITER is supported by default for Block access type volumes
 	if req.VolumeCapability.AccessMode.Mode == csi.VolumeCapability_AccessMode_MULTI_NODE_MULTI_WRITER {
 		if !isBlock {
